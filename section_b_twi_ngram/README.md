@@ -32,7 +32,8 @@ than halves the perplexity of the best add-k model.
 After lowercasing, removing punctuation and removing duplicates: 79,550 sentences and
 31,056 different words, 52% of which appear only once.
 
-Source: _TODO — add where the dataset came from and its license._
+Source: the text transcripts of [`ghananlpcommunity/twi-tts-asr`](https://huggingface.co/datasets/ghananlpcommunity/twi-tts-asr)
+on Hugging Face (GhanaNLP community), licensed CC BY-NC 4.0 (non-commercial use only).
 
 Split (shuffled with seed 42): 80% train (63,640), 10% dev (7,955), 10% test (7,955).
 
