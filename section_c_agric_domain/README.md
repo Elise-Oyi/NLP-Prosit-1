@@ -5,19 +5,37 @@ models agricultural English better than the general-purpose model.
 
 ## Results
 
-Perplexity (lower is better).
+Perplexity (lower is better), measured on every held-out dev (681) and test (682) text.
 
 | Model | Dev | Test |
 |---|---|---|
-| GPT-2 untuned | 15.45 | 15.61 |
-| **GPT-2 tuned** | **5.09** | **5.07** |
+| GPT-2 untuned | 15.63 | 15.66 |
+| **GPT-2 tuned** | **5.05** | **5.11** |
 
-> These numbers are from the first run, which measured only the first 200 dev/test
-> texts. The notebook now measures every dev and test text, so update this table
-> from `section_c_results.txt` after re-running it.
+Tuning cuts perplexity by about two thirds. Dev and test are almost the same, so the
+model is not just memorising the training data.
 
-Training loss fell from 3.34 to about 1.55. Dev and test perplexity are almost the same,
-so the model is not just memorising the training data.
+![Perplexity before and after tuning](figures/perplexity_before_after.png)
+
+The model was checked on 50 dev texts every 100 steps while training. Dev perplexity
+fell steadily (15.25 → 7.35 → 6.49 → 5.97 → 5.63 → 5.42 → 5.17) and training loss fell
+from 3.20 to 1.69 (average of the last 50 steps).
+
+![Training loss and dev perplexity](figures/training_curves.png)
+
+Given the same prompt and random seed, the untuned model drifts off topic, while the
+tuned model writes in the dataset's style and sets the answer in Kenya:
+
+> **Prompt:** My maize leaves are turning yellow. What should I
+>
+> **Untuned:** …do?" "I will make a statement, but don't panic. I'm here for you. You
+> are a human being and I am here to make you a better one.
+>
+> **Tuned:** …do about this? Hello there! It's great to hear from you. Let's talk about
+> your maize leaves turning yellow. This is a common concern, especially given the short
+> rainfall season.
+
+All samples and numbers are in [`section_c_results.txt`](section_c_results.txt).
 
 ## Data
 
@@ -34,20 +52,10 @@ AdamW, learning rate 5e-5, on a free Google Colab Tesla T4 GPU. Padding tokens a
 excluded from the loss. Every 100 steps the model is checked on 50 dev texts it never
 trains on, to confirm it is learning and not just memorising.
 
-## Figures
-
-The notebook saves these to `MyDrive/Ashesi/ICS554_Prosit1_TaskC/figures/`:
-
-- `training_curves.png` — training loss per step, and dev perplexity every 100 steps
-- `perplexity_before_after.png` — untuned vs tuned perplexity on dev and test
-
-It also prints untuned and tuned GPT-2 completions of the same prompts (same random
-seed) side by side, and saves them in `section_c_results.txt`.
-
 ## How to run
 
 Open `NLP_Task2_domain_model.ipynb` in Google Colab with a GPU runtime and run all cells.
 The dataset downloads from Hugging Face. Results and figures are saved to Google Drive under
-`MyDrive/Ashesi/ICS554_Prosit1_TaskC/`.
+`MyDrive/Ashesi/ICS554_Prosit1_TaskC/`; copies are in this folder.
 
 Requirements: `torch`, `transformers`, `datasets` (all preinstalled on Colab).

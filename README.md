@@ -13,8 +13,8 @@ Code for the Prosit 1 technical report.
 |---|---|---|
 | B | Add-k bigram (best add-k) | 175.27 |
 | B | **Kneser-Ney 5-gram** | **80.14** |
-| C | GPT-2 untuned | 15.61 |
-| C | **GPT-2 tuned** | **5.07** |
+| C | GPT-2 untuned | 15.66 |
+| C | **GPT-2 tuned** | **5.11** |
 
 Perplexities from different sections are not comparable: they use different languages,
 data and tokenizers (words vs GPT-2 subword tokens).

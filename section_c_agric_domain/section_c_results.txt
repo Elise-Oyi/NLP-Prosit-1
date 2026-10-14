@@ -1,0 +1,40 @@
+Section C - farmer agriculture domain (Kenya)
+Q&A pairs: 6815, words: 2,295,725
+Split: train 5452, dev 681, test 682
+Perplexity measured on every dev and test text
+
+GPT-2 untuned  - dev perplexity:  15.63
+GPT-2 tuned    - dev perplexity:  5.05
+GPT-2 untuned  - test perplexity: 15.66
+GPT-2 tuned    - test perplexity: 5.11
+
+Training: 600 steps, batch size 4, max length 256, learning rate 5e-5, Tesla T4 GPU
+Loss fell from 3.20 to 1.69 (average of last 50 steps)
+Dev perplexity during training (50 texts): step 0: 15.25, step 100: 7.35, step 200: 6.49, step 300: 5.97, step 400: 5.63, step 500: 5.42, step 600: 5.17
+
+Sample outputs (same prompt and random seed):
+
+PROMPT: What are the best practices for planting beans in
+UNTUNED: What are the best practices for planting beans in the USA?
+
+What are the best practices for planting beans in the USA? How much water should I use to plant beans?
+
+How much water should I use to plant beans? What
+TUNED: What are the best practices for planting beans in Nyeri County, Kenya?
+Hello there! It's great to hear from you, and I'm glad you're reaching out for advice on planting beans in Nyeri County. Beans are
+
+PROMPT: My maize leaves are turning yellow. What should I
+UNTUNED: My maize leaves are turning yellow. What should I do?"
+
+"I will make a statement, but don't panic. I'm here for you. You are a human being and I am here to make you a better one. I will
+TUNED: My maize leaves are turning yellow. What should I do about this?
+Hello there! It's great to hear from you. Let's talk about your maize leaves turning yellow. This is a common concern, especially given the short rainfall season. Since
+
+PROMPT: How much feed does a dairy cow need
+UNTUNED: How much feed does a dairy cow need to produce to get its body weight?
+
+The USDA does not count how much food a cow needs to produce to make a healthy diet.
+
+But for a healthy diet, a cow needs
+TUNED: How much feed does a dairy cow need for optimal milk production?
+Hello there, user! 🌾 It seems like I might have missed some details about your dairy cow's needs. However, I can share some insights that are helpful
